@@ -1,18 +1,18 @@
 import * as React from "react";
 
 type Props = {
-  user: User;
+  robot: Robot;
 };
 
-type User = {
+export type Robot = {
   id: number;
   name: string;
   username: string;
   email: string;
 };
 
-export const Card: React.FC<Props> = ({ user }) => {
-  const {username, name, email } = user;
+export const Card: React.FC<Props> = ({ robot }) => {
+  const {username, name, email } = robot;
   return (
     <div className='tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5'>
       <img src={`https://robohash.org/${username}`} alt="avatar" />

@@ -1,10 +1,13 @@
 import React from "react";
-import { robots } from "../initial/robots";
-import { Card } from "./Card";
+import { Card, Robot } from "./Card";
 
-export const CardList: React.FC = () => {
+type Props = {
+  robots: Robot[]
+}
+
+export const CardList: React.FC<Props> = ({robots}) => {
   const cardComponent = robots.map((user, i) => {
-    return <Card user={user} key={user.id + i} />;
+    return <Card robot={user} key={user.id + i} />;
   });
   return <>{cardComponent}</>;
 };
