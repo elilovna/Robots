@@ -1,11 +1,13 @@
 import React from 'react';
 
-type Props = any
+type Props = {
+  children: JSX.Element
+}
 
-const Scroll:React.FC<Props> = (props) => {
+const Scroll:React.FC<Props> = ({children}) => {
   return (
-    <div style={{ overflow: 'scroll', border: '5px solid black', height: '800px'}}>
-      {props.children}
+    <div style={{ overflow: 'scroll', border: '1px solid black', height: '100vh'}}>
+      {children}
     </div>
   );
 };
