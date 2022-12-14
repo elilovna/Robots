@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Robot } from "./components/Card";
-import { CardList } from "./components/CardList";
-import Scroll from "./components/Scroll";
-import { SearchBox } from "./components/SearchBox";
+import { Robot } from "../components/Card";
+import { CardList } from "../components/CardList";
+import Scroll from "../components/Scroll";
+import { SearchBox } from "../components/SearchBox";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -21,15 +21,21 @@ function App() {
     return robot.name.toLowerCase().includes(inputValue.toLowerCase());
   });
 
-  return (
-    <div className="tc">
-      <h1 className='f1'>RoboFriends</h1>
-      <SearchBox searchHandler={setInputValue} />
-      <Scroll>
-        <CardList robots={filteredRobots} />
-      </Scroll>
-    </div>
-  );
+  if(robots.length > 0) {
+    return (
+      <div className="tc">
+        <h1 className='f1'>RoboFriends</h1>
+        <SearchBox searchHandler={setInputValue} />
+        <Scroll>
+          <CardList robots={filteredRobots} />
+        </Scroll>
+      </div>
+    );
+  } else {
+    return (<h1>Loading...</h1>)
+  }
+
+  
 }
 
 export default App;
