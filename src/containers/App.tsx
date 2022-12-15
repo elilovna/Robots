@@ -4,6 +4,7 @@ import { Robot } from "../components/Card";
 import { CardList } from "../components/CardList";
 import Scroll from "../components/Scroll";
 import { SearchBox } from "../components/SearchBox";
+import { ErrorBoundry } from "../components/ErrorBoundry";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -21,21 +22,21 @@ function App() {
     return robot.name.toLowerCase().includes(inputValue.toLowerCase());
   });
 
-  if(robots.length > 0) {
+  if (robots.length > 0) {
     return (
       <div className="tc">
-        <h1 className='f1'>RoboFriends</h1>
+        <h1 className="f1">RoboFriends</h1>
         <SearchBox searchHandler={setInputValue} />
         <Scroll>
-          <CardList robots={filteredRobots} />
+          <ErrorBoundry>
+            <CardList robots={filteredRobots} />
+          </ErrorBoundry>
         </Scroll>
       </div>
     );
   } else {
-    return (<h1>Loading...</h1>)
+    return <h1>Loading...</h1>;
   }
-
-  
 }
 
 export default App;
